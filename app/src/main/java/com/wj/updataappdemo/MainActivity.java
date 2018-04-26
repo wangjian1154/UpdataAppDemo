@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.wj.updataappdemo.service.UpdateService;
 import com.wj.updataappdemo.utils.Utils;
@@ -22,6 +23,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         checkPermission();
+
+        findViewById(R.id.btn_update).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                checkVersion();
+            }
+        });
     }
 
     private void checkPermission() {
@@ -43,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             // 和onActivityResult()的requestCode一样，用来区分多个不同的请求。
             if (requestCode == 200) {
 
-                checkVersion();
             }
         }
 
