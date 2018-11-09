@@ -3,10 +3,7 @@ package com.wj.updataappdemo;
 import android.app.Application;
 import android.content.Context;
 
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.log.LoggerInterceptor;
-
-import okhttp3.OkHttpClient;
+import com.liulishuo.filedownloader.FileDownloader;
 
 /**
  * Created by wj on 2017/5/9.
@@ -23,15 +20,11 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        mContext = MyApp.this;
-
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new LoggerInterceptor(TAG))
-                .build();
-        OkHttpUtils.initClient(okHttpClient);
+        mContext = this;
+        FileDownloader.setup(mContext);
     }
 
-    public static Context getMyApplicationContext() {
+    public static Context getContext() {
         return mContext;
     }
 
